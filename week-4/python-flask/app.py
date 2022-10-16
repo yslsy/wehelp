@@ -32,11 +32,15 @@ def signin():
 # 使用 GET 方法處理路徑 /signout 的對應函式
 @app.route("/signout")
 def signout():
+    session["username"] = False
     return redirect("/")
 
 # 處理路徑 /member 的對應函式
 @app.route("/member")
 def member():
+    user = session.get("username")
+    if not user:
+        return redirect("/")
     return render_template("member.html")
 
 # 處理路徑 /error 的對應函式
@@ -44,17 +48,6 @@ def member():
 def error():
     message=request.args.get("message")
     return render_template("membernull.html", message=message)
-
-# 使用 GET 方法，處理路徑 /calculate 的對應函式
-@app.route("/calculate")
-def calculate():
-    maxNumber=request.args.get["max"]
-    maxNumber=int(maxNumber)
-    # 1+2+...+max
-    result=0
-    for n in range(1,maxNumber+1):
-        result+=n
-    return render_template("calculate.html", data=result)
 
 # 啟動網站伺服器在 Port 3000
 app.run(port=3000)
