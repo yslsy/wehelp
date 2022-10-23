@@ -6,7 +6,7 @@
 （三）  
 ![image](https://github.com/yslsy/test/blob/main/week-5/image/3.png)  
 （四）  
-![image](https://github.com/yslsy/test/blob/main/week-5/image/4.png)  
+![image](https://github.com/yslsy/wehelp/blob/main/week-5/image/4.png)  
 （五）  
 ![image](https://github.com/yslsy/test/blob/main/week-5/image/5.png)  
 （六）  
