@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WEEK6會員註冊網站</title>
+    <style>
+        .bodystyle{
+            margin-top:0px;
+            margin-left:0px;
+            margin-right:0px;
+        }
+        .h3style{
+            background-color: rgb(17, 17, 78);
+            color:white;
+            font-size:30px;
+            width:100%;
+            height:80px;
+            text-align:center;
+            line-height:80px;
+            margin-top:0px;
+        }
+        .loginsuccess{
+            height:30px;
+            text-align:center;
+            line-height:30px;
+            font-size:22px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body class="bodystyle">
+    <h3 class="h3style">歡迎光臨，這是會員頁</h3>
+    <div class="loginsuccess">
+         {{user_name}}，歡迎登入系統
+        </br>
+        <a href="http://127.0.0.1:3000/signout">登出系統</a>
+    </div>
+    
+</body>
+
+</html>
