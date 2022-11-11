@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>會員註冊網站</title>
+    <style>
+        .bodystyle{
+            margin-top:0px;
+            margin-left:0px;
+            margin-right:0px;
+        }
+        .h3style{
+            background-color: rgb(17, 17, 78);
+            color:white;
+            font-size:30px;
+            width:100%;
+            height:80px;
+            text-align:center;
+            line-height:80px;
+            margin-top:0px;
+        }
+        .loginsuccess{
+            height:30px;
+            text-align:center;
+            line-height:30px;
+            font-size:22px;
+            margin:0 auto;
+        }
+        .searchtitle{
+            font-weight:bold;
+            font-size:22px;
+        }
+    </style>
+</head>
+<body class="bodystyle">
+    <h3 class="h3style">歡迎光臨，這是會員頁</h3>
+    <div class="loginsuccess">
+         {{user_name}}，歡迎登入系統
+        </br>
+        <a href="http://127.0.0.1:3000/signout">登出系統</a>
+        <br/><br/>
+        <div class="searchtitle">查詢會員姓名</div>
+        <input id="username" class="username" style="height:22px;"/>
+        <button id="query" style="height:28px;" onclick="query()">查詢</button>
+        <br/>
+        <div id="result1"></div>
+        <br/>
+        <div class="searchtitle">更新我的姓名</div>
+        <input id="updatename" name="updatename" placeholder="輸入新的姓名" style="height:22px;"/>
+        <button id="update" style="height:28px;" onclick="update()">更新</button>
+        <br/>
+        <div id="result2"></div>
+        <br/>
+        
+
+    </div>
+    <script>
+        //查詢會員
+        function query(){
+            let result1 = document.getElementById("result1");
+            let username = document.getElementById("username").value;
+            fetch("http://127.0.0.1:3000/api/member?username="+username).then((response) =>{
+                return response.json();
+            }).then((result) => {
+                if (result.data != null){
+                    result1.innerHTML = result.data.name + " " + "(" + result.data.username + ")";
+                }
+                else{
+                    result1.innerHTML = "查無此人";
+                }
+            }) 
+        }
+
+        //更新會員
+        function update(){
+            let result2 = document.getElementById("result2");
+            let updatename = document.getElementById("updatename").value;
+            fetch("http://127.0.0.1:3000/api/member", {
+                method:"PATCH",
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    "name":updatename
+                })
+            }).then((response)=>{
+                return response.json();
+            }).then((result)=>{
+                result2.innerHTML = "更新成功";
+            }).catch((error)=>{
+                result2.innerHTML = "更新失敗";
+                })
+        }
+
+    </script>
+    
+</body>
+
+</html>
