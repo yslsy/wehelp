@@ -17,7 +17,7 @@ app.secret_key="any string but secret" # 設定 Session 的密鑰
 memberdb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Peluoorca122520",
+    password="",
     database="website",
     charset="utf-8"
 )
